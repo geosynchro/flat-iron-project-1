@@ -24,3 +24,9 @@ let requestOptions = {
     }
 
     getOneCoin('bitcoin')
+
+
+    function renderAllCoin(coinObj){
+      get
+
+    }
