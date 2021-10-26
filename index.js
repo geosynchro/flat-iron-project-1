@@ -11,6 +11,7 @@ const coinList = document.querySelector('#coinlist')
 
 //Listeners
 
+
 //Fetchers
 
 let requestOptions = {
@@ -41,13 +42,22 @@ function renderAllCoins(coinArr){
 
 function renderOneCoin(coinObj){
   const newCoin = document.createElement('li')
+  const favBtn = document.createElement('button')
+  favBtn.id = 'favBtn'
+  favBtn.textContent = 'Favorite'
   const coinName = coinObj.name
   const price = parseFloat(coinObj.priceUsd).toFixed(2)
   const change = parseFloat(coinObj.changePercent24Hr).toFixed(2)
   newCoin.textContent = `${coinName}  |  Price(USD):${price}  |  
                           Change(last 24hrs):${change}% 
                         `
-  newCoin.addEventListener('click', () => displayDetails(coinObj))                     
+
+                        
+  favBtn.addEventListener('click', handleAddDash)                      
+  
+  newCoin.addEventListener('click', () => displayDetails(coinObj))
+
+  newCoin.appendChild(favBtn)
   coinList.append(newCoin)
 }
 
@@ -59,6 +69,12 @@ function displayDetails(coinObj){
 
 
 //Event Handlers
+
+function handleAddDash(e){
+  e.preventDefault();
+  console.log('clicked')
+
+}
 
 //Initializers
 
