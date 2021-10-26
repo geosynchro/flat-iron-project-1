@@ -1,0 +1,60 @@
+#title{
+    background-color: rgb(212, 212, 212);
+    border-radius: 10px;
+    padding-left: 15px;
+    font-family: Titillium Web, sans-serif;
+    margin-right: 80%;
+}
+
+#myDash{
+    float: left;
+    width: 25%;
+    margin: auto;
+    padding-left: 25px;
+}
+
+#ticker{
+    background-color: rgb(212, 212, 212);
+    padding-left: 10px;
+    width: 70%;
+    float: right;
+    border-radius: 10px;
+}
+
+
+
+
+#fullDash {
+    border: 3px solid #fff;
+    padding: 20px;
+}
+
+.container {
+    width: 50%;
+    float: left;
+    padding: 20px;
+    border: 2px solid red;
+}
+
+
+
+
+/*#featuredCoin{
+    margin-top: 100px;
+    margin-right: 45%;
+    max-height: 25%;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: rgb(212, 212, 212);
+    border-radius: 10px;
+    float:left;
+    
+}
+
+#cryptoDash{
+    margin-left: 45%;
+    display: inline-block;
+    background-color: rgb(212, 212, 212);
+    border-radius: 10px;
+    float:right;
+}*/
