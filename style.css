@@ -1,60 +1,48 @@
-#title{
-    background-color: rgb(212, 212, 212);
-    border-radius: 10px;
-    padding-left: 15px;
-    font-family: Titillium Web, sans-serif;
-    margin-right: 80%;
-}
 
-#myDash{
-    float: left;
-    width: 25%;
-    margin: auto;
-    padding-left: 25px;
+img {
+   max-width: 20%;
 }
 
 #ticker{
     background-color: rgb(212, 212, 212);
     padding-left: 10px;
+    margin-bottom: 20px;
     width: 70%;
     float: right;
     border-radius: 10px;
 }
 
-
-
-
-#fullDash {
-    border: 3px solid #fff;
-    padding: 20px;
-}
-
-.container {
-    width: 50%;
-    float: left;
-    padding: 20px;
-    border: 2px solid red;
-}
-
-
-
-
-/*#featuredCoin{
-    margin-top: 100px;
-    margin-right: 45%;
-    max-height: 25%;
-    padding-left: 10px;
-    padding-right: 10px;
-    background-color: rgb(212, 212, 212);
-    border-radius: 10px;
-    float:left;
-    
-}
-
-#cryptoDash{
-    margin-left: 45%;
+#featured-coin, #crypto-dash {
     display: inline-block;
-    background-color: rgb(212, 212, 212);
-    border-radius: 10px;
-    float:right;
-}*/
+}
+
+#featured-coin {
+    border: solid;
+    float: left;
+    width: 50%;
+  }
+
+#crypto-dash {
+    float: right;
+    border: solid; 
+}
+
+input {
+    margin-top: 10px;
+}
+
+.bottom-container {
+    float: left;
+    width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+

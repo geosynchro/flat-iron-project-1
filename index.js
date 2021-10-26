@@ -1,6 +1,3 @@
-
-
-
 //This API pulls the top 100 MarketCap cryptocurrencies 
   
 const base_URL = 'https://api.coincap.io/v2/assets/'
@@ -50,9 +47,7 @@ function renderOneCoin(coinObj){
   const change = parseFloat(coinObj.changePercent24Hr).toFixed(2)
   newCoin.textContent = `${coinName}  |  Price(USD):${price}  |  
                           Change(last 24hrs):${change}% 
-                        `
-
-                        
+                        `                
   favBtn.addEventListener('click', handleAddDash)                      
   
   newCoin.addEventListener('click', () => displayDetails(coinObj))
@@ -64,8 +59,6 @@ function renderOneCoin(coinObj){
 function displayDetails(coinObj){
   console.log(coinObj)
 }
-
-
 
 
 //Event Handlers
@@ -84,3 +77,4 @@ function handleAddDash(e){
 
 getAllCoins().then(renderAllCoins)
 // getOneCoin('bitcoin')
+
