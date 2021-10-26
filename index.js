@@ -1,55 +1,80 @@
+//This API pulls the top 100 MarketCap cryptocurrencies 
+  
+const base_URL = 'https://api.coincap.io/v2/assets/'
+  
+//DOM Selectors
+const coinList = document.querySelector('#coinlist')
+
+
+//Listeners
+
+
+//Fetchers
+
 let requestOptions = {
-    method: 'GET',
-    mode: 'cors',
-    redirect: 'follow'
-  };
+  method: 'GET',
+  mode: 'cors',
+  redirect: 'follow'
+};
 
-
-  //This API pulls the top 100 MarketCap cryptocurrencies 
-  const base_URL = 'https://api.coincap.io/v2/assets/'
-  
-  // DOM selectors
-
-
-  //GET json data from API and parse into objects
-
-function getAllInfo() {
+function getAllCoins(){
   return fetch(base_URL, requestOptions)
-    .then(response => response.json())
-    .then(result => result)
-    .catch(error => console.log('error', error));
-}
-  
-    function getOneCoin(coinName){
-      return fetch(base_URL + `${coinName}`)
-      .then(response => response.json())
-      .then(res => console.log(res))
-    }
-
-<<<<<<< HEAD
-//Render Functions
-function renderAll(arr) {
-  arr.data.forEach(renderCoinList)
+  .then(response => response.json())
+  .then(result => result)
+  .catch(error => console.log('error', error));
 }
 
-function renderCoinList(coinObj) {
-  const coin = document.createElement('li')
+function getOneCoin(coinName){
+  fetch(base_URL + `${coinName}`)
+  .then(response => response.json())
+  .then(res => console.log(res))
+}
+
+//Renderers
+
+function renderAllCoins(coinArr){
+  console.log(coinArr)
+  coinArr.data.forEach(renderOneCoin)
+}
+
+function renderOneCoin(coinObj){
+  const newCoin = document.createElement('li')
+  const favBtn = document.createElement('button')
+  favBtn.id = 'favBtn'
+  favBtn.textContent = 'Favorite'
+  const coinName = coinObj.name
   const price = parseFloat(coinObj.priceUsd).toFixed(2)
-  console.log('coin: ', coin);
-  coin.id = `${coinObj.id}`
-  coin.innerText = `${coinObj.name} | Price: ${price}`
-  coin.addEventListener('click', addToDash)
-  cryptoItemsList.appendChild(coin);
+  const change = parseFloat(coinObj.changePercent24Hr).toFixed(2)
+  newCoin.textContent = `${coinName}  |  Price(USD):${price}  |  
+                          Change(last 24hrs):${change}% 
+                        `                
+  favBtn.addEventListener('click', handleAddDash)                      
+  
+  newCoin.addEventListener('click', () => displayDetails(coinObj))
+
+  newCoin.appendChild(favBtn)
+  coinList.append(newCoin)
 }
 
-// Initializer
-getAllInfo().then(renderAll)
-=======
-    getOneCoin('bitcoin')
+function displayDetails(coinObj){
+  console.log(coinObj)
+}
 
 
-    function renderAllCoin(coinObj){
-      get
+//Event Handlers
 
-    }
->>>>>>> 3ba71c66a98478e34d8158f8eeb4d771bb854562
+function handleAddDash(e){
+  e.preventDefault();
+  console.log('clicked')
+
+}
+
+//Initializers
+
+
+//GET json data from API and parse into objects
+
+
+getAllCoins().then(renderAllCoins)
+// getOneCoin('bitcoin')
+
