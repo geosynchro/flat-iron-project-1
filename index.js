@@ -26,6 +26,7 @@ function getAllInfo() {
       .then(res => console.log(res))
     }
 
+<<<<<<< HEAD
 //Render Functions
 function renderAll(arr) {
   arr.data.forEach(renderCoinList)
@@ -43,3 +44,12 @@ function renderCoinList(coinObj) {
 
 // Initializer
 getAllInfo().then(renderAll)
+=======
+    getOneCoin('bitcoin')
+
+
+    function renderAllCoin(coinObj){
+      get
+
+    }
+>>>>>>> 3ba71c66a98478e34d8158f8eeb4d771bb854562
