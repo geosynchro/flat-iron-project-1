@@ -89,7 +89,7 @@ function displaySearch(coinObj){
                           Change(last 24hrs):${change}% 
                         `                
   favBtn.addEventListener('click', handleAddDash)                      
-  dltBtn.addEventListener('click', () => newCoin.remove())
+  dltBtn.addEventListener('click', handleRemove)
   newCoin.addEventListener('click', () => displayDetails(coinObj))
 
 
@@ -103,6 +103,12 @@ function displaySearch(coinObj){
 
 
 //Event Handlers
+
+function handleRemove(e){
+  e.preventDefault()
+  e.stopPropagation()
+  newCoin.remove();
+}
 
 function handleAddDash(e){
   e.preventDefault();
