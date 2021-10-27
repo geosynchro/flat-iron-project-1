@@ -17,7 +17,7 @@ let requestOptions = {
   // const coinPercChangCol = document.querySelector('#coinPercChang')
   // const coinFavBtnCol = document.querySelector('#coinFavBtn')
   const coinsTable = document.querySelector('.table')
-
+  const featuredCoinName = document.querySelector('#featCoinName')
   // EVENT LISTENERS
 
   //GET json data from API and parse into objects
@@ -27,6 +27,7 @@ function getAllInfo() {
   return fetch(base_URL, requestOptions)
     .then(response => response.json())
     .then(result => result)
+    
     .catch(error => console.log('error:'))
 }
   
@@ -63,7 +64,7 @@ function renderCoinList(coinObj) {
   addFav.innerText = 'Add to Dash'
 
   
-  coin.addEventListener('click', handleAddToFeatured)
+  coin.addEventListener('click', () => renderCoinDetail(coinObj))
   addFav.addEventListener('click', handleAddToDash)
   
   coinFav.appendChild(addFav)
@@ -76,17 +77,16 @@ function renderCoinList(coinObj) {
   coinsTable.appendChild(coin)
 }
 
-// Handlers
-function handleAddToFeatured (e) {
-  e.preventDefault();
-  e.stopPropagation();
-  console.log('e: ', e);
+function renderCoinDetail (coinObj) {
+  featuredCoinName.innerText = `${coinObj.name} | ${coinObj.symbol}`
 }
+
+// Handlers
 
 function handleAddToDash (e) {
   e.preventDefault();
   e.stopPropagation();
-  console.log('e: ', e);
+  
 }
 
 
