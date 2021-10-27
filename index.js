@@ -78,6 +78,7 @@ function displaySearch(coinObj){
   const newCoin = document.createElement('p')
   const favBtn = document.createElement('button')
   const dltBtn = document.createElement('button')
+  newCoin.id = "searchedCoin"
   favBtn.id = 'favBtn'
   favBtn.textContent = 'Favorite'
   dltBtn.id = "dltBtn"
@@ -96,6 +97,7 @@ function displaySearch(coinObj){
   newCoin.appendChild(favBtn)
   newCoin.appendChild(dltBtn)
   displayedCoin.appendChild(newCoin)
+  return newCoin;
 }
 
 
@@ -107,7 +109,9 @@ function displaySearch(coinObj){
 function handleRemove(e){
   e.preventDefault()
   e.stopPropagation()
-  newCoin.remove();
+  const coin = document.querySelector('#searchedCoin')
+  // console.log('clickedasd')
+  coin.remove();
 }
 
 function handleAddDash(e){
