@@ -4,12 +4,28 @@ const apiURL = 'https://api.coinlore.net/api/tickers/'
 
 // DOM selectors
 const coinsTable = document.querySelector('.table')
-const featuredCoinName = document.querySelector('#featCoinName')
 const dashTable = document.querySelector('.coinDash')
+
+//Featured Coin
+const featuredCoinNameSym = document.querySelector('#featCoinNameSym')
+const featImg = document.querySelector('#cryptoIcon')
+const featPrice = document.querySelector('#detailPrice')
+const featRank = document.querySelector('#detailRank')
+const featPerc = document.querySelector('#detailPerc')
+const featMarkCap = document.querySelector('#detailMarkCap')
+const featSupp = document.querySelector('#detailCurrSupp')
 
 //FETCH FXNS
 function getAllInfo() {
   return fetch(base_URL, {
+    method: 'GET'})
+    .then(response => response.json())
+    .then(result => result)
+    .catch(error => console.log('error:', error))
+}
+
+function getOneDetail(id) {
+  return fetch(base_URL + `/${id}`, {
     method: 'GET'})
     .then(response => response.json())
     .then(result => result)
@@ -54,7 +70,17 @@ function renderCoinList(coinObj) {
   coinsTable.appendChild(coin)
 }
 
+function renderCoinDetail (coinObj) {
+  featImg.src = `cryptocurrency-icons/icons/${coinObj.nameid}.png`
+  featuredCoinNameSym.textContent = `${coinObj.name} | ${coinObj.symbol}`
+  featPrice.textContent = `${coinObj.price_usd}`
+  featRank.textContent = `${coinObj.rank}`
+  featPerc.textContent = `${coinObj.percent_change_24h}`
+  featMarkCap.textContent = `${coinObj.market_cap_usd}`
+  featSupp.textContent = `${coinObj.csupply}`
+}
 //HANDLER FXNS
 
 // INITIALIZERS 
 getAllInfo().then(renderAll)
+getOneDetail(90).then(renderCoinDetail)
