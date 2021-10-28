@@ -16,10 +16,12 @@ const searchForm = document.querySelector('#coinSearch')
 const displayedCoin = document.querySelector('#displayedCoin')
 const coinsTable = document.querySelector('.table')
 const ticker = document.querySelector('.crypto-scroll')
+const tickerCoins = document.getElementsByClassName('tickCoin')
 
 
 //Listeners
 searchForm.addEventListener('submit', handleSearch)
+
 
 //Fetchers
 
@@ -114,23 +116,32 @@ function displaySearch(coinObj){
 }
 
 function addCoinToTicker(coinObj){
-  console.log(coinObj)
+  // console.log(coinObj)
   const spanCoin = document.createElement('span')
   const sym = coinObj.symbol
   const price = parseFloat(coinObj.priceUsd).toFixed(2)
   const percChange = parseFloat(coinObj.changePercent24Hr).toFixed(2)
-  spanCoin.id = "tickCoin"
+  spanCoin.className = "tickCoin"
   spanCoin.textContent = ` ${sym}: $${price}, ${percChange}%(24hrs)   |`
-  if(percChange > 0){
-    spanCoin.textContent.fontcolor('green')
-  }else{
-    spanCoin.textContent.fontcolor('red')
-  }
+  
   spanCoin.addEventListener('click', () => displayDetails(coinObj))
+
+  function colorChange(coinObj){
+    if(coinObj.changePercent24Hr > 0){
+      spanCoin.style.color = 'green'
+    }else if(coinObj.changePercent24Hr < 0){
+      spanCoin.style.color = 'red'
+    }else{
+      spanCoin.style.color = 'black'
+    }
+  }
+  colorChange(coinObj);
   ticker.append(spanCoin)
 
   // console.log(coinObj)
 }
+
+
 
 
 
