@@ -47,6 +47,10 @@ p {
     width: 100%;
 }
 
+#search-bar {
+    width: 50%;
+    margin-bottom: 5px;
+}
 
 .btn {
     background-color: #3e4043;
@@ -63,9 +67,47 @@ p {
 
 
 
+#crypto-table-list {
+    
+    width: 90%;
+}
 
-
-
-
-
-
+    
+    
+    
+    
+    /* max-width: 20%;
+ }
+ 
+ #ticker{
+     background-color: rgb(212, 212, 212);
+     padding-left: 10px;
+     margin-bottom: 20px;
+     width: 70%;
+     float: right;
+     border-radius: 10px;
+ }
+ 
+ #featured-coin, #crypto-dash {
+     display: inline-block;
+ }
+ 
+ #featured-coin {
+     border: solid;
+     float: left;
+     width: 50%;
+   }
+ 
+ #crypto-dash {
+     float: right;
+     border: solid; 
+ }
+ 
+ input {
+     margin-top: 10px;
+ }
+ 
+ .bottom-container {
+     float: left;
+     width: 100%;
+ } */
