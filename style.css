@@ -1,17 +1,26 @@
-
-img {
-   max-width: 20%;
+body {
+    background-color: rgb(245, 245, 240);
 }
 
-
-#ticker{
-    background-color: rgb(212, 212, 212);
-    padding-left: 10px;
-    margin-bottom: 20px;
-    width: 70%;
-    float: right;
-    border-radius: 10px;
+#title h1 {
+    font-family: 'Zen Kurenaido', sans-serif;
+    padding-left: 15px;
+    
 }
+
+h1 {
+    font-family: 'Zen Old Mincho', serif;
+}
+
+p {
+    font-family: 'Zen Maru Gothic', sans-serif;
+}
+
+#crypto-ticker {
+    animation-iteration-count: infinite;
+    padding: 10px 0px;
+}
+
 
 #featured-coin, #crypto-dash {
     display: inline-block;
@@ -19,30 +28,25 @@ img {
 }
 
 #featured-coin {
-    border: solid;
     float: left;
     width: 50%;
+    text-align: center;
   }
 
 #crypto-dash {
     float: right;
-    border: solid;
-    width: 50%; 
+    width: 50%;
+    text-align: center; 
    
 }
 
-input {
-    margin-top: 10px;
-}
+
 
 .bottom-container {
     float: left;
     width: 100%;
 }
 
-#search-bar {
-    width: 50%;
-}
 
 .btn {
     background-color: #3e4043;
