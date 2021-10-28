@@ -10,13 +10,29 @@ img {
     background-color: white;
     /* background-color: rgb(212, 212, 212); */
     padding-left: 10px;
-    animation: marquee 8s linear infinite;
+    animation: marquee 10s linear infinite;
     overflow:hidden
 }
 
 #featured-coin, #crypto-dash {
     display: inline-block;
     border: solid;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5)
+}
+
+#tickerHeading{
+    border-radius: 10px;
+}
+
+.tickCoin{
+    background-color: white;
+    border-radius: 5px;
+    border: solid;
+    border-color: black;
+    padding-left: 10px;
+    padding-right: 10px;
+    
 }
 
 #featured-coin{

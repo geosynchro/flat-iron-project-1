@@ -122,7 +122,7 @@ function addCoinToTicker(coinObj){
   const price = parseFloat(coinObj.priceUsd).toFixed(2)
   const percChange = parseFloat(coinObj.changePercent24Hr).toFixed(2)
   spanCoin.className = "tickCoin"
-  spanCoin.textContent = ` ${sym}: $${price}, ${percChange}%(24hrs)   |`
+  spanCoin.textContent = `  ${sym}: $${price}, ${percChange}%(24hrs)   `
   
   spanCoin.addEventListener('click', () => displayDetails(coinObj))
 
