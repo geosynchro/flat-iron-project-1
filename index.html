@@ -5,43 +5,65 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CryptoDash</title>
+    <!-- bootstrap link -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<<<<<<< HEAD
+    <!-- font linksheets -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Kurenaido&display=swap" rel="stylesheet"> 
-<link href="https://fonts.googleapis.com/css2?family=Zen+Antique&family=Zen+Maru+Gothic:wght@300&family=Zen+Old+Mincho:wght@900&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Zen+Antique&family=Zen+Maru+Gothic:wght@300&display=swap" rel="stylesheet">  
+<link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@600&display=swap" rel="stylesheet">
+    <!-- css stylesheet -->
 <link rel="stylesheet" href="./style.css">
+    <!-- js script -->
     <script defer type="text/javascript" src="index.js"></script>
 </head>
 <body>
-    <div class ="nav-container">
-<div id="title">
+    <!-- title -->
+    <div id="title">
      <h1>CryptoDash</h1>
     <hr>
-        </div>
     </div>
-</div>
+    <!-- scrolling ticker -->
     <div class="crypto-ticker">
         <div class="row">
             <div class="col-md-12">
-                <div class="d-flex justify-content-between align-items-center breaking-news bg-dark">
-                    <div class="d-flex flex-row flex-grow-1 flex-fill justify-content-center bg-light py-2 text-black px-1 news"><span class="d-flex align-items-center">Current Crypto Market.</span></div>
-                    <marquee class="crypto-scroll" behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();"> <a href="#">proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </a> <span class="dot"></span> <a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut </a> <span class="dot"></span> <a href="#">Duis aute irure dolor in reprehenderit in voluptate velit esse </a> </marquee>
+                <div class="d-flex justify-content-between align-items-center breaking-news bg-muted">
+                    <div class="d-flex flex-row flex-grow-1 flex-fill justify-content-center bg-primary py-2 text-white px-1 news"><span class="d-flex align-items-center">Current Crypto Market.</span></div>
+                    <marquee class="crypto-scroll" behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();"></marquee>
                 </div>
             </div>
         </div>
 </div>
+<br>
+   <!-- featured crypto -->
     <div id="featured-coin"> 
-        <h1>Featured crypto.</h1><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem cum blanditiis repellat voluptas expedita at eum quaerat. Totam excepturi, molestias voluptate maiores doloribus illum sint praesentium assumenda quos necessitatibus obcaecati!</p>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repudiandae aspernatur, qui ipsum provident in nesciunt debitis distinctio, voluptatem similique itaque optio fugit quae, hic alias nisi necessitatibus eveniet iusto atque?</p>
+        <h1>Featured Crypto.</h1>
+        <h2 id = "detName"></h2>
+        <h3 id = "coinSym"></h3>
+        <h3 id = "curPrice"></h3>
+        <h3 id = 'perChange'></h3>
+        <h3 id = 'perChange'></h3>
+        <h3 id = 'markCap'></h3>
         </div>
+        <div class="vl"></div>
+    <div id="crypto-dash"><h1>Crypto Favs.</h1>
+    </div>
+<br>
+    <div id = "displaySearch">
+    <h3 id ="displayedCoin"></h3>
+    </div>
 
-    <div id="crypto-dash"><h1>Crypto favs.</h1>
+    <!-- search bar -->
+    <div id="search-bar">
+        <form class="form-inline my-2 my-lg-0" id ="coinSearch">
+            <input id ="searchHere" class="form-control mr-sm-2" type="search" placeholder="Search Crypto..." aria-label="Search">
+            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+          </form>
     </div>
 
 
+    <!-- table -->
 <div id ="crypto-table-list">
     <table class="table">
         <table class="table table-striped table-dark">
@@ -58,89 +80,7 @@
     </table>
 </div>
 </div>
-=======
-    <link rel="stylesheet" href="./style.css">
-    <style>@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@1,700&display=swap');</style>
-    <script defer type="text/javascript" src="index.js"></script>
-</head>
-<body>
-
-    <div  id="title"> 
-        <img src="images/cryptodash2.jpg" alt="cryptodash-logo">
-    </div> 
-<hr>
-
-<div class="middle-container">
-    <div  id="myDash">
-        <h2>My Crypto Dash</h2>
-    </div>
-
-    <div class="crypto-ticker">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="d-flex justify-content-between align-items-center breaking-news bg-white">
-                    <div id ="tickerHeading" class="d-flex flex-row flex-grow-1 flex-fill justify-content-center bg-dark py-2 text-white px-1 news">
-                        <span class="d-flex align-items-center">CryptoCurrency Market Watch</span>
-                    </div>
-                    <marquee class="crypto-scroll" behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();"> 
-                         <!-- <a href="#">proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </a>   -->
-                            <span class="dot">  </span> 
-                        <!-- <a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut </a>  -->
-                            <span class="dot">  </span> 
-                        <!-- <a href="#">Duis aute irure dolor in reprehenderit in voluptate velit esse </a>   -->
-                    </marquee>
-                </div>
-            </div>
-        </div>
-    </div>
-<br>
-    <div id="featured-coin"> 
-        <h1 id = "detName"></h1>
-        <h3 id = "coinSym"></h3>
-        <h3 id = "curPrice"></h3>
-        <h3 id = 'perChange'></h3>
-        <h3 id = 'perChange'></h3>
-        <h3 id = 'markCap'></h3>
-    </div>
-    
-    <div id="crypto-dash">
-        <h1>this is where favorited coins will show</h1>
-    </div>
-
-    <div class="bottom-container">
-        <div id="search-Bar">
-            <form class="form-inline my-2 my-lg-0" id ="coinSearch">
-                <input id ="searchHere" class="form-control mr-sm-2" type="search" placeholder="Search Crypto..." aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-              </form>
-        </div>
-
-    <!-- <div id="searchBar">
-        <form action="submit" id ="coinSearch">
-            <input type="text" id ="searchHere" placeholder="Search Crypto.."/>
-
-            <input type="submit" value = "Search"/>
-        </form> -->
-    </div>
-
-    <div id = "displaySearch">
-        <h3 id ="displayedCoin"></h3>
-    </div>
-
-    <div id ="crypto-table-list">
-        <table class="table table-striped table-dark">
-          <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Symbol</th>
-            <th scope="col">Price</th>
-            <th scope="col">Market Cap</th>
-            <th scope="col">Percent Change</th>
-            <th scope="col">Fav</th>
-          </tr>
-        </table>
-    </div>
->>>>>>> origin/nick
-
 
 </body>
 </html>
+

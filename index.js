@@ -84,7 +84,7 @@ function renderCoinList(coinObj) {
 
 function displayDetails(coinObj){
   detName.textContent = coinObj.name
-  detSym.textContent = `Ticker symbol: ${coinObj.symbol}`
+  detSym.textContent = `${coinObj.symbol}`
   curPrice.textContent = `Current Price: $${(parseFloat(coinObj.priceUsd)).toFixed(2)}`
   perChange.textContent = `Percent Change(24hrs): ${parseFloat(coinObj.changePercent24Hr).toFixed(2)}%`
   markCap.textContent = `Total Market Cap: $${parseFloat(coinObj.marketCapUsd).toFixed(2)}`

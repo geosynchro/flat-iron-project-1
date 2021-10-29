@@ -1,26 +1,32 @@
-body {
-    background-color: rgb(245, 245, 240);
-}
 
+/* title styles */
 #title h1 {
     font-family: 'Zen Kurenaido', sans-serif;
     padding-left: 15px;
+    color: rgb(47, 112, 210);
+    font-weight: bold;
     
 }
 
 h1 {
-    font-family: 'Zen Old Mincho', serif;
+    font-family: 'Inconsolata', monospace;
+    font-weight: 600;
 }
+/* body styles */
 
-p {
-    font-family: 'Zen Maru Gothic', sans-serif;
+body {
+    font-family: 'Inconsolata', monospace;
+    font-weight: 200;
+    background-color: rgb(245, 245, 240);
 }
+/* ticker */
 
 #crypto-ticker {
     animation-iteration-count: infinite;
     padding: 10px 0px;
 }
 
+/* featured and fav crypto styles */
 
 #featured-coin, #crypto-dash {
     display: inline-block;
@@ -29,26 +35,39 @@ p {
 
 #featured-coin {
     float: left;
-    width: 50%;
+    width: 48%;
     text-align: center;
-  }
+    padding: 50px; 
+}
+
+
+/* crypto favs */
 
 #crypto-dash {
     float: right;
     width: 50%;
-    text-align: center; 
+    text-align: center;
+    padding: 50px; 
    
 }
 
 
+/* vertical divider */
+.vl {
+    border-left: 6px dotted rgb(47, 112, 210);
+    height: 150px;
+    position: absolute;
+    left: 50%;
+    margin-left: -3px;
+    top: 280px;
+  }
 
-.bottom-container {
-    float: left;
-    width: 100%;
-}
 
+
+/* search styles */
 #search-bar {
-    width: 50%;
+    float:left;
+    width: 100%;
     margin-bottom: 5px;
 }
 
@@ -56,16 +75,8 @@ p {
     background-color: #3e4043;
     color: white;
     border-color: white;
-
 }
-
-#crypto-table-list {
-    width: 90%;
-}
-
-
-
-
+/* table styles */
 
 #crypto-table-list {
     
@@ -76,38 +87,4 @@ p {
     
     
     
-    /* max-width: 20%;
- }
- 
- #ticker{
-     background-color: rgb(212, 212, 212);
-     padding-left: 10px;
-     margin-bottom: 20px;
-     width: 70%;
-     float: right;
-     border-radius: 10px;
- }
- 
- #featured-coin, #crypto-dash {
-     display: inline-block;
- }
- 
- #featured-coin {
-     border: solid;
-     float: left;
-     width: 50%;
-   }
- 
- #crypto-dash {
-     float: right;
-     border: solid; 
- }
- 
- input {
-     margin-top: 10px;
- }
- 
- .bottom-container {
-     float: left;
-     width: 100%;
- } */
+  
