@@ -1,36 +1,5 @@
 {
-  "dashCoin": [
-    {
-      "coinid": "90",
-      "symbol": "BTC",
-      "name": "Bitcoin",
-      "nameid": "bitcoin",
-      "rank": 1,
-      "price_usd": "61099.36",
-      "percent_change_24h": "3.81",
-      "id": 1
-    },
-    {
-      "coinid": "80",
-      "symbol": "ETH",
-      "name": "Ethereum",
-      "nameid": "ethereum",
-      "rank": 2,
-      "price_usd": "4159.79",
-      "percent_change_24h": "3.84",
-      "id": 2
-    },
-    {
-      "coinid": "90",
-      "symbol": "BTC",
-      "name": "Bitcoin",
-      "nameid": "bitcoin",
-      "rank": 1,
-      "price_usd": "61099.36",
-      "percent_change_24h": "3.81",
-      "id": 3
-    }
-  ],
+  "dashCoin": [],
   "data": [
     {
       "id": "90",

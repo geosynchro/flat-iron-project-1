@@ -2,13 +2,16 @@
 const base_URL = 'http://localhost:3000'
 const dataURL= 'http://localhost:3000/data'
 const apiURL = 'https://api.coinlore.net/api/tickers/'
+const apiURL2= 'https://api.coincap.io/v2/assets/'
 
 
 
 // DOM SELECTORS
 const coinsTable = document.querySelector('.table')
-const searchForm = document.querySelector('.form-inline')
+const searchForm = document.querySelector('#coinSearch')
 const dupAction = document.querySelector('#duplicate')
+const ticker = document.querySelector('.crypto-scroll')
+const tickerCoins = document.getElementsByClassName('tickCoin')
 
 //Featured Coin
 const featuredCoinNameSym = document.querySelector('#featCoinNameSym')
@@ -23,7 +26,7 @@ const featSupp = document.querySelector('#detailCurrSupp')
 const dashTable = document.querySelector('.dash')
 
 //EVENT LISTENERS
-searchForm.addEventListener('submit',handleSearchForm)
+searchForm.addEventListener('submit', handleSearch)
 
 //FETCH FXNS
 function getAllInfo() {
@@ -59,8 +62,8 @@ function getDashCoin () {
   .then (data => data.forEach(renderToDash))
 }
 
-function deleteDashCoin (id) {
-  fetch (`http://localhost:3000/dashCoin/${id}`, {
+function deleteDashCoin (coinid) {
+  fetch (`http://localhost:3000/dashCoin/${coinid}`, {
     method: 'DELETE',
     headers: {
       'Content-Type':'application/json'
@@ -77,8 +80,9 @@ function getOneDetail(id) {
 }
 
 //RENDER FXNS
-function renderAll(allCoinsObj) {
-  allCoinsObj.forEach(renderCoinList)
+function renderAll(coinsArr) {
+  coinsArr.forEach(renderCoinList)
+  coinsArr.slice(0, 20).forEach(addCoinToTicker)
 }
 
 function renderCoinList(coinObj) {
@@ -121,10 +125,10 @@ function renderCoinList(coinObj) {
 function renderCoinDetail (coinObj) {
   featImg.src = `cryptocurrency-icons/icons/${coinObj.nameid}.png`
   featuredCoinNameSym.textContent = `${coinObj.name} | ${coinObj.symbol}`
-  featPrice.textContent = `${coinObj.price_usd}`
+  featPrice.textContent = `$${coinObj.price_usd}`
   featRank.textContent = `${coinObj.rank}`
-  featPerc.textContent = `${coinObj.percent_change_24h}`
-  featMarkCap.textContent = `${coinObj.market_cap_usd}`
+  featPerc.textContent = `${coinObj.percent_change_24h}%`
+  featMarkCap.textContent = `$${coinObj.market_cap_usd}`
   featSupp.textContent = `${coinObj.csupply}`
 }
 
@@ -168,12 +172,19 @@ function renderToDash (coinObj) {
   remove.appendChild(removeBtn)
   coinDashRow.appendChild(remove)
   dashTable.append(coinDashRow)
-
 }
 
 //HANDLER FXNS
-function handleSearchForm (e) {
+function handleSearch(e){
   e.preventDefault();
+  let query = document.querySelector('#searchHere').value
+  searchForm.reset();
+  
+  fetch(apiURL2+`/${query}`)
+  .then(resp => resp.json())
+  .then(coins => displaySearch(coins.data));
+  
+  console.log('clicked')
 }
 
 function handleAddToDash (e, coinObj) {
@@ -238,6 +249,61 @@ function updateNumbers (coinObj) {
   // renderCoinList(newCoin)
   // patchData(newCoin)
 }
+
+function handleRemove(e){
+  e.preventDefault()
+  e.stopPropagation()
+  const coin = document.querySelector('#searchedCoin')
+  coin.remove();
+}
+
+//TICKER
+function addCoinToTicker(coinObj){
+  const spanCoin = document.createElement('span')
+  const sym = coinObj.symbol
+  spanCoin.className = "tickCoin"
+  spanCoin.textContent = `  ${sym}: $${coinObj.price_usd}, ${coinObj.percent_change_24h}%(24hrs)   `
+  
+  spanCoin.addEventListener('click', () => displayDetails(coinObj))
+
+  function colorChange(coinObj){
+    if(coinObj.changePercent24Hr > 0){
+      spanCoin.style.color = 'green'
+    }else if(coinObj.changePercent24Hr < 0){
+      spanCoin.style.color = 'red'
+    }else{
+      spanCoin.style.color = 'black'
+    }
+  }
+  colorChange(coinObj);
+  ticker.append(spanCoin)
+}
+
+// SEARCH 
+function displaySearch(coinObj){
+  const newCoin = document.createElement('p')
+  const favBtn = document.createElement('button')
+  const dltBtn = document.createElement('button')
+  newCoin.id = "searchedCoin"
+  favBtn.id = 'favBtn'
+  favBtn.textContent = 'Favorite'
+  dltBtn.id = "dltBtn"
+  dltBtn.textContent = "Remove"
+
+  const coinName = coinObj.name
+  const price = parseFloat(coinObj.priceUsd).toFixed(2)
+  const change = parseFloat(coinObj.changePercent24Hr).toFixed(2)
+  newCoin.textContent = `${coinName}  |  Price(USD): $${price}  |  Change(last 24hrs):${change}%`                
+  favBtn.addEventListener('click', handleAddToDash)                      
+  dltBtn.addEventListener('click', handleRemove)
+  newCoin.addEventListener('click', () => displayDetails(coinObj))
+  
+  newCoin.appendChild(favBtn)
+  newCoin.appendChild(dltBtn)
+  displayedCoin.appendChild(newCoin)
+  return newCoin;
+}
+
 // INITIALIZERS 
 getAllInfo().then(renderAll)
 getOneDetail(90).then(renderCoinDetail)

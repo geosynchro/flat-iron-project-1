@@ -1,57 +1,87 @@
+body{
+    margin: 15px;
+}
 img {
-    float:left;
-    padding-right: 15px;
     max-width: 20%;
- }
- 
- #ticker{
-     background-color: rgb(212, 212, 212);
-     padding-left: 10px;
-     margin-bottom: 20px;
-     width: 70%;
-     float: right;
-     border-radius: 10px;
- }
- 
- #featured-coin, #crypto-dash {
-     display: inline-block;
-     
- }
- 
- #featured-coin {
-     border: solid;
-     float: left;
-     width: 50%;
-   }
- 
- #crypto-dash {
-     float: right;
-     border: solid;
-     width: 50%; 
+}
+
+#featCoinNameSym{
+    display: inline-block;
+    padding-top: 20px;
+    padding-left: 10px;
+}
+
+.crypto-scroll{
+    background-color: white;
+    /* background-color: rgb(212, 212, 212); */
+    padding-left: 10px;
+    animation: marquee 10s linear infinite;
+    overflow:hidden
+}
+
+#featured-coin, #crypto-dash {
+    display: inline-block;
+    border: solid;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5)
+}
+
+#tickerHeading{
+    border-radius: 10px;
+}
+
+.tickCoin{
+    background-color: white;
+    border-radius: 5px;
+    border: solid;
+    border-color: black;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    cursor: pointer;
     
- }
- 
- input {
-     margin-top: 10px;
- }
- 
- .bottom-container {
-     float: left;
-     width: 100%;
- }
- 
- #search-bar {
-     width: 50%;
- }
- 
- .btn {
-     background-color: #3e4043;
-     color: white;
-     border-color: white;
- 
- }
- 
- #crypto-table-list {
-     width: 90%;
- }
- 
+}
+
+#featured-coin{
+    width: 45%;
+    padding-left:10px;
+    padding-right:10px;
+    margin-bottom:10px;
+    
+}
+
+#crypto-dash {
+    float: right;
+    border: solid;
+    width: 50%; 
+}
+
+input {
+    width: 100%;
+}
+
+#search-Bar {
+    width: 50%;
+    margin-bottom: 5px;
+}
+
+.btn {
+    background-color: #3e4043;
+    color: white;
+    border-color: white;
+
+}
+
+#crypto-table-list {
+    width: 100%;
+    cursor: pointer;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5)
+}
+
+.cryptoIcon {
+    float: left;
+    padding-right: 35px;
+    padding-botton: 20px;
+    max-width: 25%;
+}
