@@ -9,6 +9,73 @@
       "price_usd": "61099.36",
       "percent_change_24h": "3.81",
       "id": 1
+    },
+    {
+      "coinid": "80",
+      "symbol": "ETH",
+      "name": "Ethereum",
+      "nameid": "ethereum",
+      "rank": 2,
+      "price_usd": "4159.79",
+      "percent_change_24h": "3.84",
+      "id": 2
+    },
+    {
+      "coinid": "2710",
+      "symbol": "BNB",
+      "name": "Binance Coin",
+      "nameid": "binance-coin",
+      "rank": 3,
+      "price_usd": "480.11",
+      "percent_change_24h": "5.92",
+      "id": 3
+    },
+    {
+      "coinid": "518",
+      "symbol": "USDT",
+      "name": "Tether",
+      "nameid": "tether",
+      "rank": 4,
+      "price_usd": "1.00",
+      "percent_change_24h": "0.07",
+      "id": 4
+    },
+    {
+      "coinid": "257",
+      "symbol": "ADA",
+      "name": "Cardano",
+      "nameid": "cardano",
+      "rank": 5,
+      "price_usd": "2.02",
+      "percent_change_24h": "2.37",
+      "id": 5
+    },
+    {
+      "coinid": "90",
+      "symbol": "BTC",
+      "name": "Bitcoin",
+      "nameid": "bitcoin",
+      "rank": 1,
+      "price_usd": "61099.36",
+      "percent_change_24h": "3.81",
+      "id": 6
+    },
+    {
+      "coinid": "bitcoin",
+      "symbol": "BTC",
+      "name": "Bitcoin",
+      "rank": "1",
+      "id": 7
+    },
+    {
+      "coinid": "90",
+      "symbol": "BTC",
+      "name": "Bitcoin",
+      "nameid": "bitcoin",
+      "rank": 1,
+      "price_usd": "61099.36",
+      "percent_change_24h": "3.81",
+      "id": 8
     }
   ],
   "data": [

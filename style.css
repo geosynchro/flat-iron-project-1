@@ -1,5 +1,6 @@
 body{
     margin: 15px;
+    font-family: Inconsolata;
 }
 /* img {
     max-width: 30%;
@@ -31,6 +32,15 @@ body{
     border: solid;
     border-radius: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
+}
+.subHead{
+    font-weight: 900;
+    font-family: Inconsolata;
+}
+
+#detailPrice, #detailRank, #detailPerc, #detailMarkCap, #detailCurrSupp{
+    font-weight: 400;
+    font-family: Inconsolata;
 }
 
 #coinName,#coinSym,#coinPrice,#coinPerc{
@@ -95,12 +105,12 @@ input {
 #crypto-table-list {
     width: 100%;
     cursor: pointer;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5)
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
 }
 
 .cryptoIcon {
     float: left;
     padding-right: 35px;
-    padding-botton: 20px;
+    padding-bottom: 20px;
     max-width: 25%;
 }

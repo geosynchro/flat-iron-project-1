@@ -188,7 +188,6 @@ function handleSearch(e){
 }
 
 function handleAddToDash (e, coinObj) {
-  e.preventDefault()
   e.stopPropagation()
   const coinForDash = {
     "coinid": coinObj.id,
@@ -293,7 +292,7 @@ function displaySearch(coinObj){
   const price = parseFloat(coinObj.priceUsd).toFixed(2)
   const change = parseFloat(coinObj.changePercent24Hr).toFixed(2)
   newCoin.textContent = `${coinName}  |  Price(USD): $${price}  |  Change(last 24hrs):${change}%`                
-  favBtn.addEventListener('click', handleAddToDash)                      
+  favBtn.addEventListener('click', (e) => handleAddToDash(e, coinObj))                      
   dltBtn.addEventListener('click', handleRemove)
   newCoin.addEventListener('click', () => renderCoinDetail(coinObj))
   
