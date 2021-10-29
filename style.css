@@ -1,8 +1,15 @@
 body{
     margin: 15px;
 }
-img {
-    max-width: 20%;
+/* img {
+    max-width: 30%;
+} */
+
+#logo{
+    width: 30%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #featCoinNameSym{
@@ -23,7 +30,15 @@ img {
     display: inline-block;
     border: solid;
     border-radius: 10px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5)
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
+}
+
+#coinName,#coinSym,#coinPrice,#coinPerc{
+    padding: 10px;
+}
+
+#deleteDash{
+    margin-left: 10px;
 }
 
 #tickerHeading{
@@ -62,8 +77,12 @@ input {
 }
 
 #search-Bar {
+    margin-bottom: 20px;
+    margin-top: 45px;
+}
+
+#coinSearch{
     width: 50%;
-    margin-bottom: 5px;
 }
 
 .btn {

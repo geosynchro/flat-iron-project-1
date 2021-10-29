@@ -13,22 +13,22 @@
 <body>
 
     <div  id="title"> 
-        <img src="images/cryptodash2.jpg" alt="cryptodash-logo">
+        <img id='logo' src="images/cryptodash2.jpg" alt="cryptodash-logo">
     </div> 
 <hr>
 
 <div class="middle-container">
     <div  id="myDash">
-        <h2>My Crypto Dash</h2>
+        <h4 style='text-align: center;'></h4>
     </div>
 
     <div class="crypto-ticker">
         <div class="row">
             <div class="col-md-12">
                 <div class="d-flex justify-content-between align-items-center breaking-news bg-white">
-                    <div id ="tickerHeading" class="d-flex flex-row flex-grow-1 flex-fill justify-content-center bg-dark py-2 text-white px-1 news">
+                    <!-- <div id ="tickerHeading" class="d-flex flex-row flex-grow-1 flex-fill justify-content-center bg-dark py-2 text-white px-1 news">
                         <span class="d-flex align-items-center">CryptoCurrency Market Watch</span>
-                    </div>
+                    </div> -->
                     <marquee class="crypto-scroll" behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();"> 
                          <!-- <a href="#">proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </a>   -->
                             <span class="dot">  </span> 
@@ -51,13 +51,12 @@
 </div>
     
 <div id="crypto-dash">
-    <h2>My Crypto Dash</h2>
+    <h2 style='text-align: center;'>My Crypto Dash</h2>
     <table class="dash">
         <!-- Crypto Dash Items -->
     </table>
 </div>
 
-    <div class="bottom-container">
         <div id="search-Bar">
             <form class="form-inline my-2 my-lg-0" id ="coinSearch">
                 <input id ="searchHere" class="form-control mr-sm-2" type="search" placeholder="Search Crypto..." aria-label="Search">
@@ -73,7 +72,7 @@
     </div> -->
 
     <div id = "displaySearch">
-        <h3 id ="displayedCoin"></h3>
+        <h5 id ="displayedCoin"></h5>
     </div>
 
     <div id ="crypto-table-list">
@@ -84,7 +83,7 @@
             <th class="th-sm" scope="col">Price</th>
             <th class="th-sm" scope="col">Market Cap</th>
             <th class="th-sm" scope="col">Percent Change</th>
-            <th class="th-sm" scope="col">Fav</th>
+            <th class="th-sm" scope="col"></th>
           </tr>
         </table>
     </div>

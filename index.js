@@ -46,7 +46,6 @@ function getNewInfo() {
 }
 
 function postData(coinForDash) {
-  console.log(JSON.stringify(coinForDash));
   fetch (base_URL + '/dashCoin', {
     method: 'POST',
     headers: {
@@ -67,8 +66,9 @@ function deleteDashCoin (coinid) {
     method: 'DELETE',
     headers: {
       'Content-Type':'application/json'
-      } 
-  })
+      }
+  }).then(r => r.json())
+  .then(data => console.log(data))
 }
 
 function getOneDetail(id) {
@@ -151,7 +151,7 @@ function renderToDash (coinObj) {
   coinDashName.innerText = `${coinObj.name}`
   coinDashSym.innerText = `${coinObj.symbol}`
   coinDashPrice.innerText = `${coinObj.price_usd}`
-  coinDashPerc.innerText = `${coinObj.percent_change_24h}`
+  coinDashPerc.innerText = `${coinObj.percent_change_24h}%`
   removeBtn.innerText = `Delete`
 
   
@@ -161,8 +161,8 @@ function renderToDash (coinObj) {
   coinDashPerc.addEventListener('click', () => renderCoinDetail(e, coinObj))
   
   removeBtn.addEventListener('click', () => {
-    coinDashRow.remove()
     deleteDashCoin (coinObj.id)
+    coinDashRow.remove()
   })
 
   coinDashRow.appendChild(coinDashName)
@@ -188,29 +188,6 @@ function handleSearch(e){
 }
 
 function handleAddToDash (e, coinObj) {
-
-// function fadeOutEffect(fadeTarget) {
-//     var fadeEffect = setInterval(function () {
-//         if (!fadeTarget.style.opacity) {
-//             fadeTarget.style.opacity = 1;
-//         }
-//         if (fadeTarget.style.opacity > 0) {
-//             fadeTarget.style.opacity -= 0.1;
-//         } else {
-//             clearInterval(fadeEffect);
-//         }
-//     }, 200);
-// }
-function findDups (coinName, dashName) {
-  console.log('coinName, dashName: ', coinName, dashName);
-    if (coinObj == dashName) {
-        coinObj.remove()
-        deleteDashCoin(coinObj)
-        console.log('You already have!')
-        return;
-      }
-    }
-    
   e.preventDefault()
   e.stopPropagation()
   const coinForDash = {
@@ -222,10 +199,32 @@ function findDups (coinName, dashName) {
     "price_usd": coinObj.price_usd,
     "percent_change_24h": coinObj.percent_change_24h,
   }
-  
-  findDups(coinForDash.name, coinObj.name)
   postData(coinForDash)
 }
+  // function fadeOutEffect(fadeTarget) {
+    //     var fadeEffect = setInterval(function () {
+      //         if (!fadeTarget.style.opacity) {
+//             fadeTarget.style.opacity = 1;
+//         }
+//         if (fadeTarget.style.opacity > 0) {
+//             fadeTarget.style.opacity -= 0.1;
+//         } else {
+//             clearInterval(fadeEffect);
+//         }
+//     }, 200);
+// }
+// function findDups (coinName, dashName) {
+//   console.log('coinName, dashName: ', coinName, dashName);
+//     if (coinObj == dashName) {
+//         coinObj.remove()
+//         deleteDashCoin(coinObj)
+//         console.log('You already have!')
+//         return;
+//       }
+//     }
+    
+  
+  // findDups(coinForDash.name, coinObj.name)
 
 function updateNumbers (coinObj) {
   const newCoin = {
@@ -264,14 +263,14 @@ function addCoinToTicker(coinObj){
   spanCoin.className = "tickCoin"
   spanCoin.textContent = `  ${sym}: $${coinObj.price_usd}, ${coinObj.percent_change_24h}%(24hrs)   `
   
-  spanCoin.addEventListener('click', () => displayDetails(coinObj))
+  spanCoin.addEventListener('click', () => renderCoinDetail(coinObj))
 
   function colorChange(coinObj){
-    if(coinObj.changePercent24Hr > 0){
+    if(coinObj.percent_change_24h > 0){
       spanCoin.style.color = 'green'
-    }else if(coinObj.changePercent24Hr < 0){
+    } else if(coinObj.percent_change_24h < 0){
       spanCoin.style.color = 'red'
-    }else{
+    } else {
       spanCoin.style.color = 'black'
     }
   }
@@ -286,7 +285,7 @@ function displaySearch(coinObj){
   const dltBtn = document.createElement('button')
   newCoin.id = "searchedCoin"
   favBtn.id = 'favBtn'
-  favBtn.textContent = 'Favorite'
+  favBtn.textContent = 'Add To Dash'
   dltBtn.id = "dltBtn"
   dltBtn.textContent = "Remove"
 
@@ -296,7 +295,7 @@ function displaySearch(coinObj){
   newCoin.textContent = `${coinName}  |  Price(USD): $${price}  |  Change(last 24hrs):${change}%`                
   favBtn.addEventListener('click', handleAddToDash)                      
   dltBtn.addEventListener('click', handleRemove)
-  newCoin.addEventListener('click', () => displayDetails(coinObj))
+  newCoin.addEventListener('click', () => renderCoinDetail(coinObj))
   
   newCoin.appendChild(favBtn)
   newCoin.appendChild(dltBtn)
