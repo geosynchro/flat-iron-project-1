@@ -1,8 +1,8 @@
-//This API pulls the top 100 MarketCap cryptocurrencies 
+//URLs-----------------------------------------------------
   
 const base_URL = 'https://api.coincap.io/v2/assets/'
   
-//DOM Selectors
+//DOM Selectors----------------------------------------------
  
 const coinList = document.querySelector('#coinlist')
 const featCoin = document.querySelector('#featured-coin')
@@ -19,11 +19,11 @@ const ticker = document.querySelector('.crypto-scroll')
 const tickerCoins = document.getElementsByClassName('tickCoin')
 
 
-//Listeners
+//Listeners----------------------------------------------
 searchForm.addEventListener('submit', handleSearch)
 
 
-//Fetchers
+//Fetchers----------------------------------------------
 
 
 function getAllCoins(){
@@ -40,7 +40,7 @@ function getOneCoin(coinName){
   
 }
 
-//Renderers
+//Renderers-----------------------------------------------
 
 function renderAllCoins(coinsArr) {
   coinsArr.data.forEach(renderCoinList)
@@ -68,7 +68,6 @@ function renderCoinList(coinObj) {
   coinPercent.innerText =`${changPerc}%`
   addFav.innerText = 'Add to Dash'
   
-  
   coin.addEventListener('click', () => displayDetails(coinObj))
   addFav.addEventListener('click', handleAddDash)
   
@@ -88,7 +87,6 @@ function displayDetails(coinObj){
   curPrice.textContent = `Current Price: $${(parseFloat(coinObj.priceUsd)).toFixed(2)}`
   perChange.textContent = `Percent Change(24hrs): ${parseFloat(coinObj.changePercent24Hr).toFixed(2)}%`
   markCap.textContent = `Total Market Cap: $${parseFloat(coinObj.marketCapUsd).toFixed(2)}`
-  // console.log(coinObj)
 }
 
 function displaySearch(coinObj){
@@ -116,7 +114,6 @@ function displaySearch(coinObj){
 }
 
 function addCoinToTicker(coinObj){
-  // console.log(coinObj)
   const spanCoin = document.createElement('span')
   const sym = coinObj.symbol
   const price = parseFloat(coinObj.priceUsd).toFixed(2)
@@ -137,22 +134,32 @@ function addCoinToTicker(coinObj){
   }
   colorChange(coinObj);
   ticker.append(spanCoin)
-
-  // console.log(coinObj)
 }
+ 
+//copied function from boostrap for table
+// $(document).ready(function () {
+//   $('#dtDynamicVerticalScrollExample').DataTable({
+//   "scrollY": "50vh",
+//   "scrollCollapse": true,
+//   });
+//   $('.dataTables_length').addClass('bs-select');
+//   });
+
+// document.querySelector(document).ready(function(){
+//   document.querySelector('#dtDynamicVerticalScrollExample').DataTable(
+//     "scrollY": "50vh","scrollCollapse": true,);
+//   document.querySelector('.dataTables_length').classList.add('bs-select')
+// });
 
 
 
 
-
-
-//Event Handlers
+//Event Handlers----------------------------------------------
 
 function handleRemove(e){
   e.preventDefault()
   e.stopPropagation()
   const coin = document.querySelector('#searchedCoin')
-  // console.log('clickedasd')
   coin.remove();
 }
 
@@ -164,9 +171,7 @@ function handleAddDash(e){
 
 function handleSearch(e){
   e.preventDefault();
-  
   let query = document.querySelector('#searchHere').value
-  
   searchForm.reset();
   
   fetch(base_URL +`${query}`)
@@ -176,10 +181,7 @@ function handleSearch(e){
   console.log('clicked')
 }
 
-//Initializers
-
-
-//GET json data from API and parse into objects
+//Initializers----------------------------------------------
 
 
 getAllCoins().then(renderAllCoins)
