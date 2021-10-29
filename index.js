@@ -1,9 +1,14 @@
 // END POINTS
-const base_URL = 'http://localhost:3000/data/'
+const base_URL = 'http://localhost:3000'
+const dataURL= 'http://localhost:3000/data'
 const apiURL = 'https://api.coinlore.net/api/tickers/'
 
-// DOM selectors
+
+
+// DOM SELECTORS
 const coinsTable = document.querySelector('.table')
+const searchForm = document.querySelector('.form-inline')
+const dupAction = document.querySelector('#duplicate')
 
 //Featured Coin
 const featuredCoinNameSym = document.querySelector('#featCoinNameSym')
@@ -17,37 +22,54 @@ const featSupp = document.querySelector('#detailCurrSupp')
 //Dash Coins
 const dashTable = document.querySelector('.dash')
 
+//EVENT LISTENERS
+searchForm.addEventListener('submit',handleSearchForm)
+
 //FETCH FXNS
 function getAllInfo() {
-   fetch(base_URL, {
+  return fetch(dataURL, {
     method: 'GET'})
     .then(response => response.json())
     .then(result => result)
     .catch(error => console.log('error:', error))
 }
 
-// function getNewInfo() {
-//   fetch(base_URL, {
-//     method: 'GET'})
-//     .then(response => response.json())
-//     .then(result => result.forEach(updateNumbers))
-//     .catch(error => console.log('error:', error))
-// }
+function getNewInfo() {
+  fetch(dataURL, {
+    method: 'GET'})
+    .then(response => response.json())
+    .then(result => result.forEach(updateNumbers))
+    .catch(error => console.log('error:', error))
+}
 
-// function postData(coinObj) {
-//   fetch ('http://localhost:3000/data', {
-//     method: 'POST',
-//     body: JSON.stringify(coinObj),
-//     header: {
-//     'Content-Type':'application/json'
-//     }
-//   })
-//   .then(r => r.json())
-//   .then(data => console.log(data))
-// }
+function postData(coinForDash) {
+  console.log(JSON.stringify(coinForDash));
+  fetch (base_URL + '/dashCoin', {
+    method: 'POST',
+    headers: {
+    'Content-Type':'application/json'
+    },
+    body: JSON.stringify(coinForDash)
+  }).then(renderToDash(coinForDash))
+}
+
+function getDashCoin () {
+  fetch (base_URL + '/dashCoin')
+  .then (r => r.json())
+  .then (data => data.forEach(renderToDash))
+}
+
+function deleteDashCoin (id) {
+  fetch (`http://localhost:3000/dashCoin/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type':'application/json'
+      } 
+  })
+}
 
 function getOneDetail(id) {
-  fetch (`http://localhost:3000/data${id}`, {
+  return fetch(dataURL + `/${id}`, {
     method: 'GET'})
     .then(response => response.json())
     .then(result => result)
@@ -78,12 +100,12 @@ function renderCoinList(coinObj) {
   coinPercent.innerText =`${coinObj.percent_change_24h}%`
   addFav.innerText = 'Add to Dash'
   
-  addFav.addEventListener('click', (e) => renderToDash(e, coinObj))
-  coinName.addEventListener('click', (e) => renderCoinDetail(e, coinObj))
-  coinSym.addEventListener('click', (e) => renderCoinDetail(e, coinObj))
-  coinPrice.addEventListener('click', (e) => renderCoinDetail(e, coinObj))
-  coinMarketCap.addEventListener('click', (e) => renderCoinDetail(e, coinObj))
-  coinPercent.addEventListener('click', (e) => renderCoinDetail(e, coinObj))
+  coinName.addEventListener('click', () => renderCoinDetail(coinObj))
+  coinSym.addEventListener('click', () => renderCoinDetail(coinObj))
+  coinPrice.addEventListener('click', () => renderCoinDetail(coinObj))
+  coinMarketCap.addEventListener('click', () => renderCoinDetail(coinObj))
+  coinPercent.addEventListener('click', () => renderCoinDetail(coinObj))
+  coin.addEventListener('click', () => renderCoinDetail(coinObj))
   addFav.addEventListener('click', (e) => handleAddToDash(e, coinObj))
 
   coinFav.appendChild(addFav)
@@ -96,8 +118,7 @@ function renderCoinList(coinObj) {
   coinsTable.appendChild(coin)
 }
 
-function renderCoinDetail (e, coinObj) {
-  e.stopPropagation();
+function renderCoinDetail (coinObj) {
   featImg.src = `cryptocurrency-icons/icons/${coinObj.nameid}.png`
   featuredCoinNameSym.textContent = `${coinObj.name} | ${coinObj.symbol}`
   featPrice.textContent = `${coinObj.price_usd}`
@@ -107,9 +128,7 @@ function renderCoinDetail (e, coinObj) {
   featSupp.textContent = `${coinObj.csupply}`
 }
 
-function renderToDash (e, coinObj) {
-  e.stopPropagation();
-  
+function renderToDash (coinObj) {
   const coinDashRow = document.createElement('tr')
   const coinDashName = document.createElement('td')
   const coinDashSym = document.createElement('td')
@@ -123,6 +142,7 @@ function renderToDash (e, coinObj) {
   coinDashSym.id = 'coinSym'
   coinDashPrice.id = 'coinPrice'
   coinDashPerc.id = 'coinPerc'
+  removeBtn.id = 'deleteDash'
 
   coinDashName.innerText = `${coinObj.name}`
   coinDashSym.innerText = `${coinObj.symbol}`
@@ -131,13 +151,14 @@ function renderToDash (e, coinObj) {
   removeBtn.innerText = `Delete`
 
   
-  coinDashName.addEventListener('click', (e) => renderCoinDetail(e, coinObj))
-  coinDashSym.addEventListener('click', (e) => renderCoinDetail(e, coinObj))
-  coinDashPrice.addEventListener('click', (e) => renderCoinDetail(e, coinObj))
-  coinDashPerc.addEventListener('click', (e) => renderCoinDetail(e, coinObj))
+  coinDashName.addEventListener('click', () => renderCoinDetail(e, coinObj))
+  coinDashSym.addEventListener('click', () => renderCoinDetail(e, coinObj))
+  coinDashPrice.addEventListener('click', () => renderCoinDetail(e, coinObj))
+  coinDashPerc.addEventListener('click', () => renderCoinDetail(e, coinObj))
   
   removeBtn.addEventListener('click', () => {
     coinDashRow.remove()
+    deleteDashCoin (coinObj.id)
   })
 
   coinDashRow.appendChild(coinDashName)
@@ -151,11 +172,73 @@ function renderToDash (e, coinObj) {
 }
 
 //HANDLER FXNS
-// function handleAddToDash (e, coinObj) {
-//   e.preventDefault()
-//   e.stopPropagation()
-//   // postData(coinObj)
+function handleSearchForm (e) {
+  e.preventDefault();
+}
+
+function handleAddToDash (e, coinObj) {
+
+// function fadeOutEffect(fadeTarget) {
+//     var fadeEffect = setInterval(function () {
+//         if (!fadeTarget.style.opacity) {
+//             fadeTarget.style.opacity = 1;
+//         }
+//         if (fadeTarget.style.opacity > 0) {
+//             fadeTarget.style.opacity -= 0.1;
+//         } else {
+//             clearInterval(fadeEffect);
+//         }
+//     }, 200);
 // }
+function findDups (coinName, dashName) {
+  console.log('coinName, dashName: ', coinName, dashName);
+    if (coinObj == dashName) {
+        coinObj.remove()
+        deleteDashCoin(coinObj)
+        console.log('You already have!')
+        return;
+      }
+    }
+    
+  e.preventDefault()
+  e.stopPropagation()
+  const coinForDash = {
+    "coinid": coinObj.id,
+    "symbol": coinObj.symbol,
+    "name": coinObj.name,
+    "nameid": coinObj.nameid,
+    "rank": coinObj.rank,
+    "price_usd": coinObj.price_usd,
+    "percent_change_24h": coinObj.percent_change_24h,
+  }
+  
+  findDups(coinForDash.name, coinObj.name)
+  postData(coinForDash)
+}
+
+function updateNumbers (coinObj) {
+  const newCoin = {
+    "coinid": coinObj.id,
+    "symbol": coinObj.symbol,
+    "name": coinObj.name,
+    "nameid": coinObj.nameid,
+    "rank": coinObj.rank,
+    "price_usd": coinObj.price_usd,
+    "percent_change_24h": coinObj.percent_change_24h,
+    "percent_change_1h": coinObj.percent_change_1h,
+    "percent_change_7d": coinObj.percent_change_7d,
+    "price_btc": coinObj.price_btc,
+    "market_cap_usd": coinObj.market_cap_usd,
+    "volume24": coinObj.volume24,
+    "volume24a": coinObj.volume24a,
+    "csupply": coinObj.csupply,
+    "tsupply": coinObj.tsupply,
+    "msupply": coinObj.msupply
+  }
+  // renderCoinList(newCoin)
+  // patchData(newCoin)
+}
 // INITIALIZERS 
-getAllInfo().then
-getOneDetail(90).then(renderCoinDetail(e, coinObj))
+getAllInfo().then(renderAll)
+getOneDetail(90).then(renderCoinDetail)
+getDashCoin()

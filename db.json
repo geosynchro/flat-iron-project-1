@@ -1,4 +1,5 @@
 {
+  "dashCoin": [],
   "data": [
     {
       "id": "90",
@@ -1799,18 +1800,6 @@
       "csupply": "14777565696.00",
       "tsupply": "14777565696",
       "msupply": "21000000000"
-    },
-    {
-      "id": "bitcoin",
-      "rank": "1",
-      "symbol": "BTC",
-      "name": "Bitcoin",
-      "supply": "18851540.00",
-      "maxSupply": "21000000",
-      "marketCapUsd": "1151817098529.50",
-      "volumeUsd24Hr": "32339939422.236507",
-      "priceUsd": "61099.36",
-      "changePercent24Hr": "3.81"
     }
   ],
   "info": {
