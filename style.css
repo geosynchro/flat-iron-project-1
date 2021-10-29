@@ -1,12 +1,14 @@
 body{
     margin: 15px;
 }
+
 img {
     max-width: 20%;
 }
 
 
 .crypto-scroll{
+    font-size: 20px;
     background-color: white;
     /* background-color: rgb(212, 212, 212); */
     padding-left: 10px;
@@ -14,12 +16,6 @@ img {
     overflow:hidden
 }
 
-#featured-coin, #crypto-dash {
-    display: inline-block;
-    border: solid;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5)
-}
 
 #tickerHeading{
     border-radius: 10px;
@@ -38,6 +34,12 @@ img {
     
 }
 
+#featured-coin, #crypto-dash {
+    display: inline-block;
+    border: solid;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5)
+}
 #featured-coin{
     width: 45%;
     padding-left:10px;

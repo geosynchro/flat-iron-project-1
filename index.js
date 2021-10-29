@@ -56,21 +56,17 @@ function renderCoinList(coinObj) {
   const coinPercent = document.createElement('td')
   const coinFav = document.createElement('td')
   const addFav = document.createElement('button')
-  
   const price = parseFloat(coinObj.priceUsd).toFixed(2)
   const marketPrice = parseFloat(coinObj.marketCapUsd).toFixed(2)
   const changPerc = parseFloat(coinObj.changePercent24Hr).toFixed(2)
-  
   coinName.innerText = `${coinObj.name}`
   coinSym.innerText = `${coinObj.symbol}`
   coinPrice.innerText =`$${price}`
   coinMarketCap.innerText =`$${marketPrice}`
   coinPercent.innerText =`${changPerc}%`
   addFav.innerText = 'Add to Dash'
-  
   coin.addEventListener('click', () => displayDetails(coinObj))
   addFav.addEventListener('click', handleAddDash)
-  
   coinFav.appendChild(addFav)
   coin.appendChild(coinName)
   coin.appendChild(coinSym)
